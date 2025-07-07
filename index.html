@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeMall - B3TRverse Eco-Marketplace</title>
+    <style>
+        body { font-family: 'Helvetica', sans-serif; background: #f0f7f0; color: #2e7d32; text-align: center; margin: 0; }
+        header { background: linear-gradient(135deg, #2e7d32, #4caf50); color: white; padding: 3rem 1rem; }
+        h1 { font-size: 2.8rem; margin: 0; }
+        p { font-size: 1.2rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1200px; margin: auto; }
+        .project-card { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card img { max-width: 100%; border-radius: 8px; }
+        .cta-button { display: inline-block; background: #2e7d32; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .cta-button:hover { background: #1b5e20; }
+        .wallet-section { padding: 2rem; background: #e8f5e9; }
+        .wallet-button { background: #4caf50; color: white; border: none; padding: 1rem 2rem; font-size: 1.1rem; cursor: pointer; border-radius: 5px; }
+        .wallet-button:hover { background: #388e3c; }
+        footer { background: #2e7d32; color: white; padding: 1rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VeMall: Sustainable Shopping in the B3TRverse</h1>
+        <p>Discover eco-friendly products powered by VeChain’s VeBetterDAO.</p>
+    </header>
+    <section class="project-grid">
+        <div class="project-card">
+            <img src="bubbles.jpg" alt="Bubbles Project">
+            <h3>Bubbles</h3>
+            <p>Refillable bottles for a circular economy.</p>
+            <a href="https://your-shopify-store.myshopify.com/collections/bubbles" class="cta-button">Shop Now</a>
+        </div>
+        <div class="project-card">
+            <img src="transit.jpg" alt="Transit Project">
+            <h3>Transit</h3>
+            <p>Green transport passes for sustainable travel.</p>
+            <a href="https://your-shopify-store.myshopify.com/collections/transit" class="cta-button">Shop Now</a>
+        </div>
+        <div class="project-card">
+            <img src="nfbc.jpg" alt="NFBC Book Club">
+            <h3>NFBC Book Club</h3>
+            <p>Digital books and creator content.</p>
+            <a href="https://your-shopify-store.myshopify.com/collections/nfbc" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+    <section class="wallet-section">
+        <h2>Join the B3TRverse</h2>
+        <p>Earn B3TR tokens for sustainable actions!</p>
+        <button class="wallet-button" onclick="connectWallet()">Connect VeWorld Wallet</button>
+    </section>
+    <footer>
+        <p>Powered by VeChainThor & VeBetterDAO | &copy; 2025 VeMall</p>
+    </footer>
+    <script src="https://unpkg.com/@vechain/connex@2.0.0/dist/connex.min.js"></script>
+    <script>
+        const connex = new Connex({ node: 'https://mainnet.vechain.org', network: 'main' });
+        async function connectWallet() {
+            try {
+                const cert = await connex.vendor.sign('cert', { purpose: 'identification' });
+                alert('Connected to VeWorld: ' + cert.annex.signer);
+                // Add logic to display B3TR balance or NFT-gated benefits
+            } catch (e) {
+                alert('Wallet connection failed: ' + e.message);
+            }
+        }
+    </script>
+</body>
+</html>
